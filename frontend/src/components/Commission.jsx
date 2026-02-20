@@ -29,19 +29,20 @@ const Commission = () => {
     }
 
     emailjs.send(
-      "service_rcf0mtn",
-      "template_g2304dd",
-      {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        projectType: formData.projectType,
-        message: formData.message,
-        title: "New Commission Request"
-      }
-    )
+  "service_rcf0mtn",
+  "template_g2304dd",
+  {
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    projectType: formData.projectType,
+    message: formData.message,
+    title: "New Commission Request"
+  },
+  "T_qHtY1CtqGJK1Jp4" // 👈 PUBLIC KEY BURAYA
+)
     .then(() => {
-      toast.success('Thank you! Your commission inquiry has been sent.');
+      toast.success('Thank you! Your inquiry has been sent.');
 
       setFormData({
         name: '',
