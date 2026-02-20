@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send } from 'lucide-react';
 import { toast } from 'sonner';
+import emailjs from '@emailjs/browser';
 
 const Commission = () => {
   const [formData, setFormData] = useState({
@@ -21,35 +22,40 @@ const Commission = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Simple frontend validation
+
     if (!formData.name || !formData.email || !formData.message) {
       toast.error('Please fill in all required fields');
       return;
     }
 
-    // Store in localStorage (mock backend)
-    const existingSubmissions = JSON.parse(localStorage.getItem('commissionRequests') || '[]');
-    const newSubmission = {
-      ...formData,
-      id: Date.now(),
-      timestamp: new Date().toISOString()
-    };
-    existingSubmissions.push(newSubmission);
-    localStorage.setItem('commissionRequests', JSON.stringify(existingSubmissions));
+    emailjs.send(
+      "service_rcf0mtn",
+      "template_g2304dd",
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        projectType: formData.projectType,
+        message: formData.message,
+        title: "New Commission Request"
+      }
+    )
+    .then(() => {
+      toast.success('Thank you! Your commission inquiry has been sent.');
 
-    // Show success message
-    toast.success('Thank you! Your commission inquiry has been received. We will contact you shortly.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      message: ''
-    });
-  };
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        projectType: '',
+        message: ''
+      });
+    })
+  .catch((error) => {
+    console.error(error);
+    toast.error('Something went wrong. Please try again.');
+  });
+};
 
   return (
     <section id="commission" className="py-24 lg:py-32 bg-stone-50">
