@@ -111,7 +111,7 @@ const Header = () => {
               onClick={() => scrollToSection('commission')}
               className="block w-full text-left py-2 text-base font-light tracking-wide text-stone-700 hover:text-stone-900 transition-colors duration-300"
             >
-              Commission
+              Request a Quote
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
