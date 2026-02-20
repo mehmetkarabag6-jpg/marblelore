@@ -1,0 +1,64 @@
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #57534e;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #292524;
+}
+
+/* Selection Color */
+::selection {
+    background-color: #292524;
+    color: #ffffff;
+}
+
+/* Image Loading */
+img {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Button Focus Styles */
+button:focus-visible {
+    outline: 2px solid #292524;
+    outline-offset: 2px;
+}
+
+/* Input Focus Styles */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+/* Prevent Layout Shift */
+.aspect-square,
+.aspect-\[3\/4\] {
+    position: relative;
+}
+
+.aspect-square::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.aspect-\[3\/4\]::before {
+    content: "";
+    display: block;
+    padding-bottom: 133.333%;
+}
