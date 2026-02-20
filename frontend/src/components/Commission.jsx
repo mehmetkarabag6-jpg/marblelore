@@ -39,7 +39,9 @@ const Commission = () => {
     message: formData.message,
     title: "New Commission Request"
   },
-  "T_qHtY1CtqGJK1Jp4" // 👈 PUBLIC KEY BURAYA
+  {
+    publicKey: "T_qHtY1CtqGJK1Jp4"
+  }
 )
     .then(() => {
       toast.success('Thank you! Your inquiry has been sent.');
